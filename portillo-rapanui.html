@@ -1,0 +1,1239 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portillo x Rapanui — Edición Limitada</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --noir: #0A0A0A;
+      --noir-soft: #141414;
+      --noir-card: #1A1714;
+      --chocolate: #3D2B1F;
+      --chocolate-mid: #5C3D2E;
+      --chocolate-light: #8B6914;
+      --gold: #C9A96E;
+      --gold-light: #E8D5A8;
+      --gold-bright: #D4AF37;
+      --cream: #FAF5F0;
+      --cream-soft: #F0E8DF;
+      --wine-red: #722F37;
+      --wine-rose: #C4687A;
+      --berry: #8B1A4A;
+      --text-light: #B8B0A4;
+      --text-muted: #7A7268;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--noir);
+      color: var(--cream);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ═══ ANNOUNCEMENT BAR ═══ */
+    .announcement {
+      background: linear-gradient(90deg, var(--gold) 0%, var(--gold-bright) 50%, var(--gold) 100%);
+      color: var(--noir);
+      text-align: center;
+      padding: 10px 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    /* ═══ NAVIGATION ═══ */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 20px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all 0.4s ease;
+    }
+    nav.scrolled {
+      background: rgba(10,10,10,0.95);
+      backdrop-filter: blur(20px);
+      padding: 14px 60px;
+      border-bottom: 1px solid rgba(201,169,110,0.15);
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .nav-logo span {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      color: var(--gold-light);
+    }
+    .nav-logo .x-mark {
+      color: var(--gold);
+      font-size: 0.85rem;
+      opacity: 0.6;
+    }
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--text-light);
+      text-decoration: none;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+
+    /* ═══ HERO ═══ */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      padding: 120px 20px 80px;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 30% 20%, rgba(201,169,110,0.08) 0%, transparent 60%),
+        radial-gradient(ellipse at 70% 80%, rgba(114,47,55,0.06) 0%, transparent 60%);
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 24px;
+      border: 1px solid rgba(201,169,110,0.3);
+      border-radius: 100px;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 40px;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-badge::before {
+      content: '';
+      width: 6px; height: 6px;
+      background: var(--gold);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 8vw, 7rem);
+      font-weight: 400;
+      line-height: 1.05;
+      position: relative;
+      z-index: 1;
+      margin-bottom: 12px;
+    }
+    .hero h1 .line-collab {
+      display: block;
+      font-size: 0.35em;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      margin-bottom: 16px;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--gold-light);
+    }
+    .hero-tagline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+      font-style: italic;
+      color: var(--gold);
+      position: relative;
+      z-index: 1;
+      margin-top: 8px;
+      letter-spacing: 0.05em;
+    }
+    .hero-sub {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.1rem, 2vw, 1.5rem);
+      color: var(--text-light);
+      max-width: 600px;
+      line-height: 1.6;
+      margin: 24px auto 50px;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-ctas {
+      display: flex;
+      gap: 20px;
+      position: relative;
+      z-index: 1;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 18px 44px;
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-bright) 100%);
+      color: var(--noir);
+      font-weight: 600;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(201,169,110,0.3);
+    }
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 18px 44px;
+      background: transparent;
+      color: var(--gold-light);
+      font-weight: 500;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 1px solid rgba(201,169,110,0.3);
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .btn-secondary:hover {
+      border-color: var(--gold);
+      background: rgba(201,169,110,0.08);
+    }
+
+    /* ═══ HERO IMAGE SHOWCASE ═══ */
+    .hero-image-section {
+      width: 100%;
+      max-width: 1100px;
+      margin: 70px auto 0;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-image-wrapper {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(201,169,110,0.15);
+      box-shadow: 0 40px 100px rgba(0,0,0,0.6);
+    }
+    .hero-image-wrapper img {
+      width: 100%;
+      display: block;
+    }
+    .hero-image-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10,10,10,0.6) 0%, transparent 30%);
+      pointer-events: none;
+    }
+    .hero-image-caption {
+      position: absolute;
+      bottom: 30px;
+      left: 40px;
+      right: 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+    .hero-image-caption .caption-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-style: italic;
+      color: var(--cream-soft);
+      opacity: 0.9;
+    }
+    .hero-image-caption .edition-tag {
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid rgba(201,169,110,0.4);
+      padding: 6px 16px;
+      border-radius: 4px;
+    }
+
+    /* ═══ STATS ROW ═══ */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 80px 20px;
+      gap: 20px;
+    }
+    .stat {
+      text-align: center;
+      padding: 30px 10px;
+      border-left: 1px solid rgba(201,169,110,0.12);
+    }
+    .stat:first-child { border-left: none; }
+    .stat-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .stat-label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    /* ═══ SECTION DIVIDER ═══ */
+    .divider {
+      width: 60px;
+      height: 1px;
+      background: var(--gold);
+      margin: 0 auto;
+      opacity: 0.4;
+    }
+
+    /* ═══ CONCEPT SECTION ═══ */
+    .concept {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 100px 60px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .concept-text .section-tag {
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 24px;
+    }
+    .concept-text h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.6rem;
+      font-weight: 400;
+      line-height: 1.2;
+      margin-bottom: 24px;
+    }
+    .concept-text h2 em {
+      font-style: italic;
+      color: var(--gold-light);
+    }
+    .concept-text p {
+      color: var(--text-light);
+      line-height: 1.8;
+      font-size: 0.95rem;
+      margin-bottom: 16px;
+    }
+    .concept-image {
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid rgba(201,169,110,0.1);
+    }
+    .concept-image img {
+      width: 100%;
+      display: block;
+    }
+
+    /* ═══ THE COLLECTION GRID ═══ */
+    .collection {
+      padding: 100px 60px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .collection-header {
+      text-align: center;
+      margin-bottom: 70px;
+    }
+    .collection-header .section-tag {
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+    .collection-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      font-weight: 400;
+    }
+    .collection-header h2 em { font-style: italic; color: var(--gold-light); }
+    .collection-header p {
+      color: var(--text-muted);
+      margin-top: 16px;
+      font-size: 0.95rem;
+      max-width: 550px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Filter tabs */
+    .filter-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 50px;
+      flex-wrap: wrap;
+    }
+    .filter-tab {
+      padding: 10px 24px;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: transparent;
+      border: 1px solid rgba(201,169,110,0.15);
+      color: var(--text-muted);
+      cursor: pointer;
+      border-radius: 4px;
+      transition: all 0.3s;
+      font-family: 'Inter', sans-serif;
+    }
+    .filter-tab.active,
+    .filter-tab:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+      background: rgba(201,169,110,0.06);
+    }
+
+    /* Bottle grid */
+    .bottles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 24px;
+    }
+    .bottle-card {
+      background: linear-gradient(180deg, var(--noir-card) 0%, rgba(26,23,20,0.6) 100%);
+      border: 1px solid rgba(201,169,110,0.08);
+      border-radius: 8px;
+      overflow: hidden;
+      transition: all 0.4s ease;
+      cursor: pointer;
+      position: relative;
+    }
+    .bottle-card:hover {
+      border-color: rgba(201,169,110,0.25);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+    }
+    .bottle-card-visual {
+      height: 260px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .bottle-card-visual::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      opacity: 0.12;
+    }
+    .bottle-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 8rem;
+      font-weight: 700;
+      color: rgba(201,169,110,0.07);
+      position: absolute;
+      right: -10px;
+      bottom: -20px;
+      line-height: 1;
+    }
+    .bottle-icon {
+      width: 60px;
+      height: 180px;
+      border-radius: 4px 4px 2px 2px;
+      position: relative;
+      z-index: 1;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    }
+    .bottle-icon .cap {
+      width: 20px;
+      height: 24px;
+      margin: 0 auto -2px;
+      border-radius: 3px 3px 0 0;
+      background: var(--chocolate-mid);
+    }
+    .bottle-icon .body {
+      width: 60px;
+      height: 156px;
+      border-radius: 4px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+    }
+    .bottle-icon .label-text {
+      font-size: 0.45rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--cream);
+      font-weight: 600;
+      opacity: 0.9;
+    }
+    .bottle-icon .label-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      color: var(--cream);
+      font-weight: 700;
+    }
+    .bottle-card-info {
+      padding: 24px;
+      border-top: 1px solid rgba(201,169,110,0.06);
+    }
+    .bottle-card-info .varietal {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      margin-bottom: 4px;
+    }
+    .bottle-card-info .type-tag {
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+    .bottle-card-info .flavor-notes {
+      font-size: 0.82rem;
+      color: var(--text-light);
+      line-height: 1.5;
+    }
+
+    /* ═══ COFFRET / BOX SECTION ═══ */
+    .coffret {
+      padding: 120px 60px;
+      background: linear-gradient(180deg, var(--noir) 0%, var(--noir-card) 50%, var(--noir) 100%);
+      position: relative;
+    }
+    .coffret::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, rgba(201,169,110,0.04) 0%, transparent 70%);
+    }
+    .coffret-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 80px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+    .coffret-image {
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid rgba(201,169,110,0.12);
+      box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+    }
+    .coffret-image img { width: 100%; display: block; }
+    .coffret-details .section-tag {
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+    .coffret-details h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem;
+      font-weight: 400;
+      line-height: 1.2;
+      margin-bottom: 24px;
+    }
+    .coffret-details h2 em { font-style: italic; color: var(--gold-light); }
+    .coffret-details p {
+      color: var(--text-light);
+      line-height: 1.8;
+      margin-bottom: 16px;
+      font-size: 0.95rem;
+    }
+    .coffret-features {
+      list-style: none;
+      margin: 30px 0;
+      display: grid;
+      gap: 14px;
+    }
+    .coffret-features li {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 0.88rem;
+      color: var(--text-light);
+    }
+    .coffret-features li::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      border: 1px solid var(--gold);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* ═══ TRANSFORMATION / BEFORE-AFTER ═══ */
+    .transformation {
+      padding: 120px 60px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .transformation-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    .transformation-header .section-tag {
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+    .transformation-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.6rem;
+      font-weight: 400;
+    }
+    .transformation-header h2 em { font-style: italic; color: var(--gold-light); }
+    .magic-container {
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(201,169,110,0.15);
+      box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+      cursor: pointer;
+    }
+    .magic-container img {
+      width: 100%;
+      display: block;
+      transition: opacity 1.2s ease;
+    }
+    .magic-container .img-original {
+      position: relative;
+      z-index: 1;
+    }
+    .magic-container .img-chocolate {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      opacity: 0;
+    }
+    .magic-container:hover .img-chocolate,
+    .magic-container.revealed .img-chocolate {
+      opacity: 1;
+    }
+    .magic-container:hover .img-original,
+    .magic-container.revealed .img-original {
+      opacity: 0;
+    }
+    .magic-label {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 10;
+      padding: 28px 36px;
+      background: linear-gradient(to top, rgba(10,10,10,0.85) 0%, transparent 100%);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      transition: all 1.2s ease;
+    }
+    .magic-label .label-side {
+      text-align: left;
+    }
+    .magic-label .label-side:last-child {
+      text-align: right;
+    }
+    .magic-label .label-tag {
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 4px;
+    }
+    .magic-label h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: var(--cream);
+    }
+    .magic-hint {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      transition: opacity 0.5s;
+    }
+    .magic-container.revealed ~ .magic-hint {
+      opacity: 0.3;
+    }
+    @keyframes shimmer {
+      0% { background-position: -200% center; }
+      100% { background-position: 200% center; }
+    }
+    .magic-hint span {
+      background: linear-gradient(90deg, var(--text-muted), var(--gold), var(--text-muted));
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: shimmer 3s linear infinite;
+    }
+
+    /* ═══ NEWSLETTER / CTA ═══ */
+    .final-cta {
+      padding: 120px 60px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .final-cta::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, rgba(201,169,110,0.06) 0%, transparent 60%);
+    }
+    .final-cta .section-tag {
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+      position: relative;
+    }
+    .final-cta h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 400;
+      max-width: 700px;
+      margin: 0 auto 16px;
+      position: relative;
+    }
+    .final-cta h2 em { font-style: italic; color: var(--gold-light); }
+    .final-cta p {
+      color: var(--text-muted);
+      max-width: 500px;
+      margin: 0 auto 40px;
+      font-size: 0.95rem;
+      position: relative;
+    }
+    .email-form {
+      display: flex;
+      gap: 12px;
+      max-width: 480px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .email-form input {
+      flex: 1;
+      padding: 16px 24px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(201,169,110,0.2);
+      border-radius: 4px;
+      color: var(--cream);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+    .email-form input::placeholder { color: var(--text-muted); }
+    .email-form input:focus { border-color: var(--gold); }
+
+    /* ═══ DONDE ENCONTRARLOS ═══ */
+    .donde {
+      padding: 120px 60px;
+      background: linear-gradient(135deg, var(--chocolate) 0%, #2A1A10 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .donde::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 20% 50%, rgba(201,169,110,0.08) 0%, transparent 60%);
+    }
+    .donde-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 70px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+    .donde-image {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.4);
+      border: 1px solid rgba(201,169,110,0.12);
+    }
+    .donde-image img { width: 100%; display: block; }
+    .donde-content .section-tag {
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+    .donde-content h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem;
+      font-weight: 400;
+      line-height: 1.2;
+      margin-bottom: 20px;
+      color: var(--cream);
+    }
+    .donde-content h2 em { font-style: italic; color: var(--gold-light); }
+    .donde-content > p {
+      color: var(--text-light);
+      line-height: 1.8;
+      font-size: 0.95rem;
+      margin-bottom: 36px;
+    }
+    .donde-channels {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .channel {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 20px 24px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(201,169,110,0.12);
+      border-radius: 8px;
+      transition: all 0.3s;
+    }
+    .channel:hover {
+      border-color: rgba(201,169,110,0.3);
+      background: rgba(201,169,110,0.06);
+    }
+    .channel-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(201,169,110,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--gold);
+    }
+    .channel-info h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: var(--cream);
+      margin-bottom: 4px;
+    }
+    .channel-info p {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    @media (max-width: 900px) {
+      .donde { padding: 60px 24px; }
+      .donde-inner { grid-template-columns: 1fr; gap: 40px; }
+    }
+
+    /* ═══ FOOTER ═══ */
+    footer {
+      padding: 60px 60px 40px;
+      border-top: 1px solid rgba(201,169,110,0.08);
+    }
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .footer-brand span {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      color: var(--text-muted);
+    }
+    .footer-brand .x-mark {
+      color: var(--gold);
+      font-size: 0.75rem;
+      opacity: 0.5;
+    }
+    .footer-legal {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      opacity: 0.6;
+    }
+
+    /* ═══ SCROLL ANIMATIONS ═══ */
+    .reveal {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .reveal.hidden {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ═══ RESPONSIVE ═══ */
+    @media (max-width: 900px) {
+      nav { padding: 16px 24px; }
+      nav.scrolled { padding: 12px 24px; }
+      .nav-links { display: none; }
+      .concept { grid-template-columns: 1fr; padding: 60px 24px; gap: 40px; }
+      .collection { padding: 60px 24px; }
+      .coffret { padding: 60px 24px; }
+      .coffret-inner { grid-template-columns: 1fr; gap: 40px; }
+      .transformation { padding: 60px 24px; }
+      .magic-container { border-radius: 8px; }
+      .stats { grid-template-columns: repeat(2, 1fr); }
+      .stat { border-left: none; border-bottom: 1px solid rgba(201,169,110,0.08); padding: 20px; }
+      .final-cta { padding: 80px 24px; }
+      .email-form { flex-direction: column; }
+      footer { padding: 40px 24px; }
+      .footer-inner { flex-direction: column; gap: 16px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="mainNav">
+    <div class="nav-logo">
+      <span>Portillo</span>
+      <span class="x-mark">&times;</span>
+      <span>Rapanui</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#coleccion">Coleccion</a></li>
+      <li><a href="#coffret">Bombones Varietal</a></li>
+      <li><a href="#transformacion">Concepto</a></li>
+      <li><a href="#donde">Donde encontrarlos</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-badge">
+      <span></span> Edicion Limitada 2026
+    </div>
+    <h1>
+      <span class="line-collab">Portillo &times; Rapanui</span>
+      Bombones<br><em>Varietal</em>
+    </h1>
+    <p class="hero-tagline">Vino hecho chocolate</p>
+    <p class="hero-sub">
+      14 varietales de Portillo transformados en chocolates artesanales
+      por las manos de Rapanui. Cada botella, una obra de chocolate.
+    </p>
+    <div class="hero-ctas">
+      <a href="#coffret" class="btn-secondary">Descubrir los Bombones</a>
+      <a href="#coleccion" class="btn-secondary">Ver la coleccion</a>
+    </div>
+
+    <div class="hero-image-section">
+      <div class="hero-image-wrapper">
+        <img src="Gemini_Generated_Image_r3v2ywr3v2ywr3v2.png" alt="Coleccion Portillo x Rapanui - Cofre edicion limitada con 14 botellas de chocolate artesanal">
+        <div class="hero-image-overlay"></div>
+        <div class="hero-image-caption">
+          <span class="caption-text">Las 14 variedades unicas, en un cofre de coleccion</span>
+          <span class="edition-tag">Numeradas &amp; Limitadas</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <div class="stats reveal">
+    <div class="stat">
+      <div class="stat-number">14</div>
+      <div class="stat-label">Variedades</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">100%</div>
+      <div class="stat-label">Cacao artesanal</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">500</div>
+      <div class="stat-label">Cajas numeradas</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">2</div>
+      <div class="stat-label">Marcas iconicas</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- CONCEPT -->
+  <section class="concept reveal">
+    <div class="concept-text">
+      <p class="section-tag">El Concepto</p>
+      <h2>Cada botella de Portillo,<br>reimaginada en <em>chocolate</em></h2>
+      <p>
+        La coleccion nace de una pregunta simple: si el vino fuera chocolate,
+        a que sabria? Rapanui tomo las 14 etiquetas de Portillo y las tradujo
+        en piezas de chocolate artesanal, respetando los perfiles de cada varietal.
+      </p>
+      <p>
+        El Malbec se vuelve chocolate negro con frutos rojos. El Sauvignon Blanc,
+        chocolate blanco con citricos. El Rose, una ganache de frutilla.
+        Cada pieza replica la botella original en forma y espiritu.
+      </p>
+    </div>
+    <div class="concept-image">
+      <img src="Gemini_Generated_Image_r3v2ywr3v2ywr3v2.png" alt="Cofre de bombones Portillo x Rapanui - Edicion Limitada">
+    </div>
+  </section>
+
+  <!-- TRANSFORMATION -->
+  <section class="transformation reveal" id="transformacion">
+    <div class="transformation-header">
+      <p class="section-tag">De la vid al cacao</p>
+      <h2>La misma botella.<br><em>Otro universo.</em></h2>
+    </div>
+    <div class="magic-container" id="magicBox" onclick="this.classList.toggle('revealed')">
+      <img class="img-original" src="Gemini_Generated_Image_sku4lusku4lusku4.png" alt="Botellas originales de vino Portillo">
+      <img class="img-chocolate" src="Gemini_Generated_Image_r3v2ywr3v2ywr3v2.png" alt="Bombones Varietal Portillo x Rapanui">
+      <div class="magic-label">
+        <div class="label-side">
+          <div class="label-tag">El original</div>
+          <h3>Portillo &mdash; 14 varietales</h3>
+        </div>
+        <div class="label-side">
+          <div class="label-tag">La edicion</div>
+          <h3>Portillo &times; Rapanui</h3>
+        </div>
+      </div>
+    </div>
+    <p class="magic-hint"><span>Toca o pasa el mouse para ver la magia</span></p>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- COLLECTION -->
+  <section class="collection reveal" id="coleccion">
+    <div class="collection-header">
+      <p class="section-tag">Las 14 Variedades</p>
+      <h2>La <em>coleccion</em> completa</h2>
+      <p>Cada pieza traduce el caracter del varietal en chocolate artesanal de Bariloche</p>
+    </div>
+
+    <div class="filter-tabs">
+      <button class="filter-tab active" data-filter="all">Todas</button>
+      <button class="filter-tab" data-filter="tinto">Tintos</button>
+      <button class="filter-tab" data-filter="blanco">Blancos</button>
+      <button class="filter-tab" data-filter="rosado">Rosado</button>
+      <button class="filter-tab" data-filter="especial">Especiales</button>
+    </div>
+
+    <div class="bottles-grid" id="bottlesGrid"></div>
+  </section>
+
+  <!-- COFFRET -->
+  <section class="coffret" id="coffret">
+    <div class="coffret-inner reveal">
+      <div class="coffret-image">
+        <img src="Gemini_Generated_Image_r3v2ywr3v2ywr3v2.png" alt="Bombones Varietal Portillo x Rapanui edicion limitada">
+      </div>
+      <div class="coffret-details">
+        <p class="section-tag">Objeto de coleccion</p>
+        <h2>Bombones Varietal<br><em>que todos van a querer</em></h2>
+        <p>
+          Un estuche de madera noble con herrajes dorados y terciopelo negro
+          que custodia los 14 bombones de chocolate como joyas. Cada caja
+          esta numerada a mano y lleva el sello de ambas casas.
+        </p>
+        <p>
+          No es solo chocolate. Es una pieza de coleccion que une dos
+          mundos: el terroir mendocino y la chocolateria patagonica.
+          Un regalo que nadie olvida.
+        </p>
+        <ul class="coffret-features">
+          <li>14 bombones de chocolate artesanal</li>
+          <li>Estuche de madera con terminaciones en oro</li>
+          <li>Interior en terciopelo negro</li>
+          <li>Placa grabada con numero de serie</li>
+          <li>Tarjeta de cata con notas de cada variedad</li>
+          <li>Solo 500 unidades en el mundo</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- DONDE ENCONTRARLOS -->
+  <section class="donde" id="donde">
+    <div class="donde-inner reveal">
+      <div class="donde-image">
+        <img src="bombones-varietal-caja.png" alt="Caja Bombones Varietal Portillo x Rapanui en locales">
+      </div>
+      <div class="donde-content">
+        <p class="section-tag">Disponibles todos los dias</p>
+        <h2>Encontralos en<br><em>todos los locales</em></h2>
+        <p>
+          Los Bombones Varietal estan disponibles en todas las tiendas
+          Rapanui del pais y en la tienda oficial de Portillo en Mercado Libre.
+        </p>
+        <div class="donde-channels">
+          <div class="channel">
+            <div class="channel-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            </div>
+            <div class="channel-info">
+              <h4>Locales Rapanui</h4>
+              <p>Todas las sucursales del pais, todos los dias</p>
+            </div>
+          </div>
+          <div class="channel">
+            <div class="channel-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+            </div>
+            <div class="channel-info">
+              <h4>Tienda Portillo</h4>
+              <p>Mercado Libre &mdash; envio a todo el pais</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span>Portillo</span>
+        <span class="x-mark">&times;</span>
+        <span>Rapanui</span>
+      </div>
+      <span class="footer-legal">Edicion Limitada 2026 &middot; Beber con moderacion</span>
+    </div>
+  </footer>
+
+  <script>
+    // ═══ DATA ═══
+    const bottles = [
+      { num: '01', name: 'Malbec', type: 'tinto', cat: 'Tinto clasico', notes: 'Chocolate negro 70% con ganache de frutos rojos, ciruela y violetas.', color: '#4A1528', capColor: '#2D0D18' },
+      { num: '02', name: 'Cabernet Sauvignon', type: 'tinto', cat: 'Tinto intenso', notes: 'Chocolate negro con cassis, un toque de pimiento y taninos de cacao.', color: '#3D1020', capColor: '#260A14' },
+      { num: '03', name: 'Sauvignon Blanc', type: 'blanco', cat: 'Blanco citrico', notes: 'Chocolate blanco con lima, pomelo y notas herbaceas frescas.', color: '#E8DFC8', capColor: '#C4B896', dark: true },
+      { num: '04', name: 'Chardonnay', type: 'blanco', cat: 'Blanco frutal', notes: 'Chocolate blanco con durazno, manzana verde y un punto tropical.', color: '#F0E6CC', capColor: '#D4C89E', dark: true },
+      { num: '05', name: 'Rose', type: 'rosado', cat: 'Rosado fresco', notes: 'Ganache de frutilla y sandia envuelta en chocolate rosa natural.', color: '#D4899A', capColor: '#B86B7C' },
+      { num: '06', name: 'Merlot', type: 'tinto', cat: 'Tinto suave', notes: 'Chocolate con leche, cereza madura y un final aterciopelado.', color: '#5C1A2A', capColor: '#3D1018' },
+      { num: '07', name: 'Tempranillo', type: 'tinto', cat: 'Tinto amable', notes: 'Chocolate semiamargo con fruta roja y especias dulces.', color: '#6B2035', capColor: '#4A1525' },
+      { num: '08', name: 'Pinot Noir', type: 'tinto', cat: 'Tinto delicado', notes: 'Chocolate negro suave con cereza, frambuesa y un toque floral.', color: '#7A2842', capColor: '#5C1A30' },
+      { num: '09', name: 'Naranjo Dulce', type: 'especial', cat: 'Especial', notes: 'Chocolate blanco con naranja confitada, miel y flores de azahar.', color: '#E8A84C', capColor: '#C4862E' },
+      { num: '10', name: 'Tinto Bonito', type: 'tinto', cat: 'Tinto frutal', notes: 'Chocolate con leche y frutos del bosque, dulce y envolvente.', color: '#F5F0E8', capColor: '#D4C8B4', dark: true },
+      { num: '11', name: 'Syrah', type: 'tinto', cat: 'Tinto especiado', notes: 'Chocolate negro con pimienta, frutos oscuros y un toque ahumado.', color: '#3A0E1E', capColor: '#240812' },
+      { num: '12', name: 'Pinot Grigio', type: 'blanco', cat: 'Blanco seco', notes: 'Chocolate blanco con almendras, pistacho y piel de limon.', color: '#E0D8C0', capColor: '#C0B498', dark: true },
+      { num: '13', name: 'Dulce Natural', type: 'especial', cat: 'Dulce', notes: 'Chocolate ruby con rosas, frambuesas y un dulzor elegante.', color: '#C4506A', capColor: '#A03A52' },
+      { num: '14', name: 'Malbec Blanco', type: 'blanco', cat: 'Blanco singular', notes: 'Chocolate blanco con notas de durazno blanco y un fondo de cacao.', color: '#ECE4D0', capColor: '#CCC0A4', dark: true },
+    ];
+
+    // ═══ RENDER BOTTLES ═══
+    function renderBottles(filter = 'all') {
+      const grid = document.getElementById('bottlesGrid');
+      const filtered = filter === 'all' ? bottles : bottles.filter(b => b.type === filter);
+
+      grid.innerHTML = filtered.map(b => `
+        <div class="bottle-card" data-type="${b.type}">
+          <div class="bottle-card-visual">
+            <div class="bottle-number">${b.num}</div>
+            <div class="bottle-icon">
+              <div class="cap" style="background:${b.capColor}"></div>
+              <div class="body" style="background:${b.color}">
+                <span class="label-text" style="color:${b.dark ? '#3D2B1F' : '#FAF5F0'}">Portillo</span>
+                <span class="label-num" style="color:${b.dark ? '#3D2B1F' : '#FAF5F0'}">${b.num}</span>
+              </div>
+            </div>
+          </div>
+          <div class="bottle-card-info">
+            <div class="type-tag">${b.cat}</div>
+            <div class="varietal">${b.name}</div>
+            <div class="flavor-notes">${b.notes}</div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    renderBottles();
+
+    // ═══ FILTER TABS ═══
+    document.querySelectorAll('.filter-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        renderBottles(tab.dataset.filter);
+      });
+    });
+
+    // ═══ NAV SCROLL ═══
+    window.addEventListener('scroll', () => {
+      document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    // ═══ REVEAL ON SCROLL ═══
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  </script>
+
+</body>
+</html>
